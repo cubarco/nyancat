@@ -872,7 +872,7 @@ int main(int argc, char ** argv) {
 			printf(" ");
 			width--;
 		}
-		printf("\033[1;37mCongratulations for being here! Nyan for a while and keep on hacking. :)\033[J\033[0m");
+		printf("\033[1;37mCongratulations for being here! Nyan for a while and go on hacking. :)\033[J\033[0m");
 		//if (show_counter) {
 		//	/* Get the current time for the "You have nyaned..." string */
 		//	time(&current);
