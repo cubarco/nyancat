@@ -534,7 +534,7 @@ int main(int argc, char ** argv) {
 							sb_len  = 0;
 							memset(sb, 0, sizeof(sb));
 							break;
-						case IAC: 
+						case IAC:
 							/* IAC IAC? That's probably not right. */
 							done = 2;
 							break;
@@ -866,31 +866,38 @@ int main(int argc, char ** argv) {
 			/* End of row, send newline */
 			newline(1);
 		}
-		if (show_counter) {
-			/* Get the current time for the "You have nyaned..." string */
-			time(&current);
-			double diff = difftime(current, start);
-			/* Now count the length of the time difference so we can center */
-			int nLen = digits((int)diff);
-			/*
-			 * 29 = the length of the rest of the string;
-			 * XXX: Replace this was actually checking the written bytes from a
-			 * call to sprintf or something
-			 */
-			int width = (terminal_width - 29 - nLen) / 2;
-			/* Spit out some spaces so that we're actually centered */
-			while (width > 0) {
-				printf(" ");
-				width--;
-			}
-			/* You have nyaned for [n] seconds!
-			 * The \033[J ensures that the rest of the line has the dark blue
-			 * background, and the \033[1;37m ensures that our text is bright white.
-			 * The \033[0m prevents the Apple ][ from flipping everything, but
-			 * makes the whole nyancat less bright on the vt220
-			 */
-			printf("\033[1;37mYou have nyaned for %0.0f seconds!\033[J\033[0m", diff);
+        /* Modified for the recruit of Team IT of Unique Studio as an easter egg */
+		int width = (terminal_width - 69) / 2;
+		while (width > 0) {
+			printf(" ");
+			width--;
 		}
+		printf("\033[1;37mCongratulations for being here! Nyan for a while and keep on hacking. :)\033[J\033[0m");
+		//if (show_counter) {
+		//	/* Get the current time for the "You have nyaned..." string */
+		//	time(&current);
+		//	double diff = difftime(current, start);
+		//	/* Now count the length of the time difference so we can center */
+		//	int nLen = digits((int)diff);
+		//	/*
+		//	 * 29 = the length of the rest of the string;
+		//	 * XXX: Replace this was actually checking the written bytes from a
+		//	 * call to sprintf or something
+		//	 */
+		//	int width = (terminal_width - 29 - nLen) / 2;
+		//	/* Spit out some spaces so that we're actually centered */
+		//	while (width > 0) {
+		//		printf(" ");
+		//		width--;
+		//	}
+		//	/* You have nyaned for [n] seconds!
+		//	 * The \033[J ensures that the rest of the line has the dark blue
+		//	 * background, and the \033[1;37m ensures that our text is bright white.
+		//	 * The \033[0m prevents the Apple ][ from flipping everything, but
+		//	 * makes the whole nyancat less bright on the vt220
+		//	 */
+		//	printf("\033[1;37mYou have nyaned for %0.0f seconds!\033[J\033[0m", diff);
+		//}
 		/* Reset the last color so that the escape sequences rewrite */
 		last = 0;
 		/* Update frame count */
